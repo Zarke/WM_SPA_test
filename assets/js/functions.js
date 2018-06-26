@@ -1,8 +1,10 @@
 //get data form the JSON file
-function getData(){
+function getData(item){
     $.getJSON('assets/data.json', function(json) {
         questions = json;
     })
+    localStorage.setItem("tagTypes", JSON.stringify(item));
+    
 }
 //checks if value is true and sets checked icon accordingly
 function isTrue(table,colIndx){
