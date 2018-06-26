@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SPA - test app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/main.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+    <script src="assets/js/datatables.min.js"></script>
+    <script src="assets/js/dataTables.select.min.js"></script>
+    <script src="assets/js/jquery.view-engine.js"></script>
+    <script src="assets/js/functions.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>TagId</th>
+                <th>Tag Name</th>
+                <th>Tag Type</th>
+                <th>My Feed</th>
+                <th>My Favourites</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="entry">
+                <th class="bind-tagID"></th>
+                <th class="bind-tagName"></th>
+                <th class="bind-tagType"></th>
+                <th class="bind-myFeed"></th>
+                <th class="bind-myFavourites"></th>
+                <th><i class="fas fa-pen"></i> <i class="fas fa-times"></i>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
