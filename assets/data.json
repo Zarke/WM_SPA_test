@@ -1,6 +1,6 @@
 [
     {"tagID":"1","tagName":"Milan","tagType":"","myFeed":"","myFavourites":"true"},
-    {"tagID":"2","tagName":"Petrovac","tagType":"","myFeed":"true","myFavourites":""},
+    {"tagID":"2","tagName":"Petrovac","tagType":"City","myFeed":"true","myFavourites":""},
     {"tagID":"3","tagName":"Arsenal","tagType":"","myFeed":"","myFavourites":"true"},
     {"tagID":"4","tagName":"Audi Q7","tagType":"","myFeed":"true","myFavourites":""},
     {"tagID":"5","tagName":"Milenko","tagType":"","myFeed":"","myFavourites":"true"},
