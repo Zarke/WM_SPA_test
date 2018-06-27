@@ -19,9 +19,7 @@ $(function(){
 
     //fill out the modal with the information from the clicked row
     $('table tbody').on('click', 'tr', function () {
-        var data = table.row( this ).data();
-        var self = this;
-        console.log()
+        var data = table.row(this).data();
         $('#tagName').val(data[1])
         if(!data[3]){
             $('#myFeed').prop( "checked", false );
@@ -34,7 +32,7 @@ $(function(){
         } else { 
             $('#tagTypes').val(data[2]) 
         }
-        $('#save').on('click',$.proxy(function(){
+        $('#save').one('click',$.proxy(function(){
             data = alterRow(data)
             table.row(this).data(data);
         }, this ))

@@ -46,7 +46,7 @@ function alterRow(data){
         data[2] = $('#tagTypes').val();//chosen tagType
         if(!$('#myFeed').is(':checked')){
             //if myFeedis ont checked this cell will be empty on render
-        } else {data[3] = '<i class="fas fa-check"></i>'; console.log('cekiran je')}//if it is checked it will have the value of the checked icon 
+        } else {data[3] = '<i class="fas fa-check"></i>'}//if it is checked it will have the value of the checked icon 
         if(!$('#myFav').is(':checked')){
             data[4] = ''
         } else{data[4] = '<i class="fas fa-check"></i>'}
