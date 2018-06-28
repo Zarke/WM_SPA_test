@@ -1,14 +1,15 @@
-var entries;//varaible that stores table entries
-var tagTypes = ["Person","City","Car","Football Club","Object"];
-var rowData = ["","","","","","<i class='fas fa-pen' data-toggle='modal' data-target='#inputModal'></i> <i class='fas fa-times'></i>"];//variable that holds data for the inserted row
+var tagIDs = new Array();//used for determening id of a new entry
+var tagTypes = ['Person','City','Car','Football Club','Object'];//all available tags
+var rowData =   {'tagID':'','tagName':'','tagType':'','myFeed':'','myFavourites':'','actions':'<i class="fas fa-pen" data-toggle="modal" data-target="#inputModal"></i> <i class="fas fa-times"></i>'};//template for a new row
 
 $(function(){
     //loads tagTypes into the dropdown in the modal
     $('#tagTypes').view(JSON.parse(localStorage.getItem("tagTypes")))
-
-    //loads data via ajax call and defines a statis actions column taht is the same for all entries
+    
+    //loads data via ajax call and defines a static actions column that is same for all entries
     var table = $("table").DataTable({
         'dom': '<"top"f>rt<"bottom"lp><"clear">',
+        "pagingType": "full_numbers",
         'ajax'       : {
             "type"   : "POST",
             "url"    : "assets/data.json",
@@ -16,13 +17,14 @@ $(function(){
               var return_data = new Array();
               for(var i=0;i< json.length; i++){
                 return_data.push({
-                  'tagID': json[i].tagID,
+                  'tagID': parseInt(json[i].tagID),
                   'tagName'  : json[i].tagName,
                   'tagType' : json[i].tagType,
                   'myFeed' : json[i].myFeed,
                   'myFavourites' : json[i].myFavourites,
                   'actions' : '<i class="fas fa-pen" data-toggle="modal" data-target="#inputModal"></i> <i class="fas fa-times"></i>'
                 })
+                tagIDs.push(return_data[i].tagID);//loads initial tagID values fron the json file
               }
               return return_data;
             }
@@ -35,11 +37,14 @@ $(function(){
             {'data': 'myFavourites'},
             {'data': 'actions'},
           ],
-          "fnInitComplete": function(oSettings, json) {
+          "fnInitComplete": function() {
             setIcons(table,3);
             setIcons(table,4);
+            $('#newEntry').click(function(){
+                addEntry(table);
+                
+            });
           }
-      
     }
     );
 
@@ -48,9 +53,6 @@ $(function(){
         table.row( $(this).parents('tr') ).remove().draw();
     } );
 
-    // $('table tbody').on('click', 'tr', function () {
-    //     console.log(table.row(this).data());
-    // });
     //fill out the modal with the information from the clicked row
     $('table tbody').on('click', 'tr', function () {
         data = table.row(this).data();
@@ -67,21 +69,13 @@ $(function(){
             $('#tagTypes').val(data.tagType) ;
         }
         $('#save').one('click',$.proxy(function(){
-            data = alterRow(data);
+            data = getRowData(data);
             table.row(this).data(data);
         }, this ))
     } );
-
-    //adds a new row and goes to the last page of the pagination
-    // $('#save').on('click',function(){
-    //     rowData = alterRow(rowData)
-    //     rowData[0] = TagId(table) + 1; 
-    //     console.log(rowData[0])
-    //     console.log(table.rows().nodes())
-    //     table.row.add(rowData).draw()
-    //     table.page('last').draw()
-    //     $('#inputModal').modal('hide');
-    // })
+    
+    
+    
 })
 
 
