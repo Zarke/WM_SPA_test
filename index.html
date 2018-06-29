@@ -12,13 +12,16 @@
     <script src="assets/js/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
     <script type="text/javascript" src="assets/js/datatables.min.js"></script>
-    <script src="assets/js/datatables.min.js"></script>
+    <link href="http://rawgit.com/vedmack/yadcf/master/jquery.dataTables.yadcf.css" rel="stylesheet" type="text/css" />
+    <script src="http://rawgit.com/vedmack/yadcf/master/jquery.dataTables.yadcf.js">http://rawgit.com/vedmack/yadcf/master/jquery.dataTables.yadcf.js</script>
     <script src="assets/js/dataTables.select.min.js"></script>
+    <script src="http://rawgit.com/vedmack/yadcf/master/jquery.dataTables.yadcf.js"></script>
     <script src="assets/js/jquery.view-engine.js"></script>
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+    <script src="http://rawgit.com/vedmack/yadcf/master/jquery.dataTables.yadcf.js"></script>
 
 </head>
 <body>
@@ -36,7 +39,20 @@
                         <th><input type="text" id="searchTagID" placeholder="Search TagID"></th>
                         <th><input type="text" id="searchTagName" placeholder="Search TagName"></th>
                         <th><input type="text" id="searchTagType" placeholder="Search TagType"></th>
-                        <th id="filterFeed"></th>
+                        <th>
+                            <select id="filterFeed">
+                                <option value="">All</option>
+                                <option value="checked">Yes</option>
+                                <option value="not">No</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select id="filterFav">
+                                <option value="">All</option>
+                                <option value="checked">Yes</option>
+                                <option value="not">No</option>
+                            </select>
+                        </th>
                     </tr>
                     <tr>
                         <td>TagId</td>
@@ -50,7 +66,7 @@
                 <tbody>
                     
                 </tbody>
-               
+               <tfoot></tfoot>
             </table>
         </div>
     </div>

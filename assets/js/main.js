@@ -34,8 +34,8 @@ $(function(){
             {"searchable": true,'data': 'tagID'},
             {"searchable": true,'data': 'tagName'},
             {"searchable": true,'data': 'tagType'},
-            {'data': 'myFeed'},
-            {'data': 'myFavourites'},
+            {'type':'html','data': 'myFeed'},
+            {'type':'html','data': 'myFavourites'},
             {'data': 'actions'},
           ],
           "fnInitComplete": function() {
@@ -45,8 +45,7 @@ $(function(){
                 addEntry(table);
             });
           }
-    }
-    );
+    });
 
     //search options for the first three columns
     $('#searchTagID').on('keyup', function(){
@@ -58,6 +57,14 @@ $(function(){
     $('#searchTagType').on('keyup', function(){
         table.column(2).search(this.value).draw();
     });
+    $('#filterFeed').change(function(){
+        console.log(this.value)
+        table.column(3).search(this.value).draw();
+    })
+    $('#filterFav').change(function(){
+        console.log(this.value)
+        table.column(4).search(this.value).draw();
+    })
 
     //deletes the row when the delete icon is clicked
     $('table tbody').on( 'click', 'i.fa-times', function () {
@@ -80,8 +87,8 @@ $(function(){
             $('#tagTypes').val(data.tagType) ;
         }
         $('#save').one('click',$.proxy(function(){
-            data = getRowData(data);
-            table.row(this).data(data);
+            data = getRowData(data);//sets the data for the new row into the data variable
+            table.row(this).data(data).draw();//appends the new row 
         }, this ))
     } );
     
