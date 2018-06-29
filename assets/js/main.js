@@ -10,6 +10,7 @@ $(function(){
     var table = $("table").DataTable({
         'dom': '<"top"f>rt<"bottom"lp><"clear">',
         "pagingType": "full_numbers",
+        "searching": true, 
         'ajax'       : {
             "type"   : "POST",
             "url"    : "assets/data.json",
@@ -30,9 +31,9 @@ $(function(){
             }
           },
           "columns"    : [
-            {'data': 'tagID'},
-            {'data': 'tagName'},
-            {'data': 'tagType'},
+            {"searchable": true,'data': 'tagID'},
+            {"searchable": true,'data': 'tagName'},
+            {"searchable": true,'data': 'tagType'},
             {'data': 'myFeed'},
             {'data': 'myFavourites'},
             {'data': 'actions'},
@@ -42,11 +43,21 @@ $(function(){
             setIcons(table,4);
             $('#newEntry').click(function(){
                 addEntry(table);
-                
             });
           }
     }
     );
+
+    //search options for the first three columns
+    $('#searchTagID').on('keyup', function(){
+        table.column(0).search(this.value).draw();
+    });
+    $('#searchTagName').on('keyup', function(){
+        table.column(1).search(this.value).draw();
+    });
+    $('#searchTagType').on('keyup', function(){
+        table.column(2).search(this.value).draw();
+    });
 
     //deletes the row when the delete icon is clicked
     $('table tbody').on( 'click', 'i.fa-times', function () {
@@ -73,7 +84,6 @@ $(function(){
             table.row(this).data(data);
         }, this ))
     } );
-    
     
     
 })
