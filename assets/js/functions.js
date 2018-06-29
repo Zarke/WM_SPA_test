@@ -2,10 +2,10 @@
 //checks if value is true and sets checked icon accordingly
 function setIcons(table,colIndx){
     table.rows().every(function (rowIdx) {
-    if(table.cell(rowIdx, colIndx).data()){
-        table.cell(rowIdx, colIndx).data('<i class="fas fa-check"><p hidden>checked</p></i>');
+    if(table.cell(rowIdx, colIndx).data() == 'true'){
+        table.cell(rowIdx, colIndx).data('<i class="fas fa-check"></i>');
     } else{
-        table.cell(rowIdx, colIndx).data('<p hidden>not</p>');
+        table.cell(rowIdx, colIndx).data('');
     }
   }).draw();
 }

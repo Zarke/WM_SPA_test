@@ -22,7 +22,9 @@ $(function(){
                   'tagName'  : json[i].tagName,
                   'tagType' : json[i].tagType,
                   'myFeed' : json[i].myFeed,
+                  'hiddenFeed':json[i].myFeed,
                   'myFavourites' : json[i].myFavourites,
+                  'hiddenFav':json[i].myFavourites,
                   'actions' : '<i class="fas fa-pen" data-toggle="modal" data-target="#inputModal"></i> <i class="fas fa-times"></i>'
                 })
                 tagIDs.push(return_data[i].tagID);//loads initial tagID values fron the json file
@@ -34,18 +36,48 @@ $(function(){
             {"searchable": true,'data': 'tagID'},
             {"searchable": true,'data': 'tagName'},
             {"searchable": true,'data': 'tagType'},
-            {'type':'html','data': 'myFeed'},
-            {'type':'html','data': 'myFavourites'},
+            {'data': 'myFeed'},
+            {'data':'hiddenFeed'},
+            {'data': 'myFavourites'},
+            {'data':'hiddenFav'},
             {'data': 'actions'},
+          ],
+          "columnDefs":[
+              {
+                  "targets":[4],
+                  "visible":false
+              },
+              {
+                "targets":[6],
+                "visible":false
+              }
           ],
           "fnInitComplete": function() {
             setIcons(table,3);
-            setIcons(table,4);
+            setIcons(table,5);
             $('#newEntry').click(function(){
                 addEntry(table);
             });
           }
     });
+    $.fn.dataTable.ext.search.push(
+        function( settings, data, dataIndex ) {
+            var myFeed = $('#filterFeed').val();
+            var myFav = $('#filterFav').val();
+            var checkedFeed = data[4]; // use data for the hiddenFeed column
+            var checkedFav = data[6]; // use data for the hiddenFeed column
+            if ( 
+                 (!myFeed && !myFav) ||
+                 (!myFeed && myFav == checkedFav) ||
+                 (myFeed == checkedFeed && !myFav) ||
+                 (myFeed == checkedFeed && myFav == checkedFav)
+               )
+            {
+                return true;
+            }
+            return false;
+        }
+    );
 
     //search options for the first three columns
     $('#searchTagID').on('keyup', function(){
@@ -58,12 +90,10 @@ $(function(){
         table.column(2).search(this.value).draw();
     });
     $('#filterFeed').change(function(){
-        console.log(this.value)
-        table.column(3).search(this.value).draw();
+        table.draw();
     })
     $('#filterFav').change(function(){
-        console.log(this.value)
-        table.column(4).search(this.value).draw();
+        table.draw();
     })
 
     //deletes the row when the delete icon is clicked
