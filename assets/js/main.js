@@ -12,7 +12,7 @@ $(function(){
         "pagingType": "full_numbers",
         "searching": true, 
         'ajax'       : {
-            "type"   : "POST",
+            "type"   : "GET",
             "url"    : "assets/data.json",
             "dataSrc": function (json) {
               var return_data = new Array();
