@@ -43,15 +43,35 @@ $(function(){
             {'data': 'actions'},
           ],
           "columnDefs":[
-              {
-                  "targets":[4],
-                  "visible":false
-              },
-              {
-                "targets":[6],
-                "visible":false
-              }
+            {
+                "width": "10%",
+                "targets":[0]
+            },
+            {
+              "width": "12%",
+              "targets":[3]
+            },
+            {
+              "targets":[4],
+              "visible":false
+            },
+            {
+              "width": "12%",
+              "targets":[5]
+            },
+            {
+              "targets":[6],
+              "visible":false
+            }
           ],
+          "language": {
+            "paginate": {
+              "first": "<i class='fas fa-step-backward'></i>",
+              "previous": "<i class='fas fa-caret-left'></i>",
+              "next": "<i class='fas fa-caret-right'></i>",
+              "last": "<i class='fas fa-step-forward'></i>",
+            }
+          },
           "fnInitComplete": function() {
             setIcons(table,3);
             setIcons(table,5);
@@ -60,6 +80,9 @@ $(function(){
             });
           }
     });
+
+
+    //custom filter for My Feed and My Favourites
     $.fn.dataTable.ext.search.push(
         function( settings, data, dataIndex ) {
             var myFeed = $('#filterFeed').val();

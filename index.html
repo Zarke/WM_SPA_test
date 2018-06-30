@@ -30,10 +30,10 @@
         <div class=" data table-responsive mt-4">
             <table class=" data-table table table-light table-bordered table-hover">
                 <thead class="data-table__head">
-                    <tr id="search" class="data-table__head">
-                        <th><input type="text" id="searchTagID" placeholder="Search TagID"></th>
-                        <th><input type="text" id="searchTagName" placeholder="Search TagName"></th>
-                        <th><input type="text" id="searchTagType" placeholder="Search TagType"></th>
+                    <tr id="search" class="data-table__head__row">
+                        <th><input type="text" id="searchTagID"  placeholder="&#xf002"></th>
+                        <th><input type="text" id="searchTagName" placeholder="&#xf002"></th>
+                        <th><input type="text" id="searchTagType" placeholder="&#xf002"></th>
                         <th>
                             <select id="filterFeed">
                                 <option value="">All</option>
@@ -43,22 +43,22 @@
                         </th>
                         <th></th>
                         <th>
-                            <select id="filterFav">
+                            <select class="data-table__head__row" id="filterFav">
                                 <option value="">All</option>
                                 <option value="true">Yes</option>
                                 <option value="false">No</option>
                             </select>
                         </th>
                     </tr>
-                    <tr>
-                        <td>TagId</td>
-                        <td>Tag Name</td>
-                        <td>Tag Type</td>
-                        <td>My Feed</td>
-                        <td>HiddenFeed</td>
-                        <td>My Favourites</td>
-                        <td>HiddenFav</td>
-                        <td>Actions</td>
+                    <tr class="data-table__head__row">
+                        <th>TagId</th>
+                        <th>Tag Name</th>
+                        <th>Tag Type</th>
+                        <th>My Feed</th>
+                        <th>HiddenFeed</th>
+                        <th>My Favourites</th>
+                        <th>HiddenFav</th>
+                        <th>Actions</th>
                         
                     </tr>
                 </thead>
