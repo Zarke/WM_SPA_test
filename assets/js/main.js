@@ -1,6 +1,6 @@
 var tagIDs = new Array();//used for determening id of a new entry
 var tagTypes = ['Person','City','Car','Football Club','Object'];//all available tags
-var rowData =   {'tagID':'','tagName':'','tagType':'','myFeed':'','myFavourites':'','actions':'<i class="fas fa-pen" data-toggle="modal" data-target="#inputModal"></i> <i class="fas fa-times"></i>'};//template for a new row
+var rowData =   {'tagID':'','tagName':'','tagType':'','myFeed':'','hiddenFeed':'','myFavourites':'','hiddenFav':'','actions':'<i class="fas fa-pen" data-toggle="modal" data-target="#inputModal"></i> <i class="fas fa-times"></i>'};//template for a new row
 
 $(function(){
     //loads tagTypes into the dropdown in the modal
@@ -112,6 +112,7 @@ $(function(){
     $('#searchTagType').on('keyup', function(){
         table.column(2).search(this.value).draw();
     });
+    //filter trigers for My Feed and My Favourites 
     $('#filterFeed').change(function(){
         table.draw();
     })
@@ -124,7 +125,7 @@ $(function(){
         table.row( $(this).parents('tr') ).remove().draw();
     } );
 
-    //fill out the modal with the information from the clicked row
+    //fills out the modal with the information from the clicked row
     $('table tbody').on('click', 'tr', function () {
         data = table.row(this).data();
         $('#tagName').val(data.tagName);
@@ -140,7 +141,7 @@ $(function(){
             $('#tagTypes').val(data.tagType) ;
         }
         $('#save').one('click',$.proxy(function(){
-            data = getRowData(data);//sets the data for the new row into the data variable
+            data = getRowData(data);//sets the data for the selected row into the data variable
             table.row(this).data(data).draw();//appends the new row 
         }, this ))
     } );

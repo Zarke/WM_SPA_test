@@ -16,20 +16,21 @@ function getImage(input) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $('.progress').removeClass('d-none');
-            $('#upload i').addClass('d-none');
+            $('#upload i, #upload span').addClass('d-none');
             $('.progress-bar').animate({width:'100%'},700,function(){
                 $('.progress').addClass('d-none');
                 $('.progress-bar').css('width', '0%').attr('aria-valuenow', 0); 
-                $('#upload').css('background-image','url(' + e.target.result + ')');  
+                $('#upload').css('background-image','url(' + e.target.result + ')');
+                $('#upload img').css('width','100%');  
             })
         };  
         reader.readAsDataURL(input.files[0]);
     }
 }
 
-//returns the updated values for the selected/added row
+//returns the updated values for the selected row or sets value for the added row
 function getRowData(data){
-    //checks if tagName input is empty
+    //checks if tagName input is empty adn triggers the popover
     if(!$('#tagName').val()){
         $('#tagName').popover("show");
         setTimeout(function(){
@@ -40,10 +41,18 @@ function getRowData(data){
         data.tagType = $('#tagTypes').val();//tagType value of the selected row
         if(!$('#myFeed').is(':checked')){ //if myFeed is not checked this cell will be empty on render
             data.myFeed = '';
-        } else {data.myFeed = '<i class="fas fa-check"></i>';}//if it is checked it will have the value of the checked icon 
+            data.hiddenFeed = 'false';
+        } else {
+            data.myFeed = '<i class="fas fa-check"></i>';
+            data.hiddenFeed = 'true';
+        }//if it is checked it will have the value of the checked icon 
         if(!$('#myFav').is(':checked')){
             data.myFavourites = '';
-        } else{data.myFavourites = '<i class="fas fa-check"></i>';}
+            data.hiddenFav = 'false';
+        } else{
+            data.myFavourites = '<i class="fas fa-check"></i>';
+            data.hiddenFav = 'true';
+        }
     }
     //keeps tagIDs variable up to date on changes
     for(var i=0;i< tagIDs.length; i++){

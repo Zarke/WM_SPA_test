@@ -72,33 +72,42 @@
 
     <!-- Modal -->
     <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header justify-content-center" >
-              <h5 class="modal-title" id="exampleModalLongTitle"></h5>Tag</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <h4 class='col-12 modal-title text-center'>
+                        Tag
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                    </button>
+                </h4>
             </div>
             <div class="modal-body">
-                <label for="tagName">Name *</label>
-                <input type="text" id="tagName" data-placement="top" data-content="This field is required">
-
-                <label for="myFeed">My Feed</label>
-                <input type="checkbox" id="myFeed">
-
-                <label for="myFav">My Favourites</label>
-                <input type="checkbox" id="myFav">
-
+                <div class="form-group">
+                    <label for="tagName">Name *</label>
+                    <input type="text" id="tagName" class="form-control" data-placement="top" data-content="This field is required">
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" id="myFeed" class="form-check-input" >
+                    <label for="myFeed" class="form-check-label mr-3">My Feed</label>
+                    <input type="checkbox" id="myFav" class="form-check-input">
+                    <label for="myFav" class="form-check-label">My Favourites</label>
+                </div>
+                <div class="form-group mt-3">
                 <label for="tagTypes">Type(<span>Changing tag type will affect the entire tag, loss of information may occur</span>)</label>
-                <select name="tagTypes" id="tagTypes"> 
+                <select name="tagTypes" id="tagTypes" class="form-control "> 
                 </select>
-                <br>
+                </div>
+                
                 <span>Photo</span>
                 <div class="image-upload">
-                    <label id="upload" for="file-input" class=" d-flex justify-content-center" style="width:100%;height:100px;background-color: gray">
-                        <i class="fas fa-plus align-self-center">Add photo</i>
-                        <div class="progress d-none" style="width:100%">
+                    <label id="upload" for="file-input" class=" d-flex justify-content-center" >
+                        <div class="d-flex flex-column justify-content-center">
+                            <i class="fas fa-plus align-self-center upload__Icon"></i>
+                            <span>Add photo</span>
+                        </div>
+                        
+                        <div class="progress d-none" style="width:0">
                             <div class="progress-bar"></div>
                         </div>
                     </label>
@@ -106,8 +115,8 @@
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="removeImg()">Cansel</button>
-              <button type="button" id="save" class="btn btn-primary" onclick="removeImg()">Save</button>
+              <button type="button" class="modal__cansel" data-dismiss="modal" onclick="removeImg()">Cansel</button>
+              <button type="button" id="save" class="modal__save" onclick="removeImg()">Save</button>
             </div>
           </div>
         </div>
