@@ -5736,7 +5736,17 @@ select {
   width: 100%;
   height: 12rem;
   background-color: #fff;
-  border: 0.1rem dashed #ced4da; }
+  border: 0.1rem dashed #ced4da;
+  background-size: 100% 100% !important; }
+
+div.progress {
+  border-radius: 0;
+  height: .4rem;
+  vertical-align: middle;
+  width: 90%; }
+  div.progress-bar {
+    background-color: #20c997;
+    transition: none; }
 
 .upload__Icon {
   color: #adb5bd;

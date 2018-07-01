@@ -1,4 +1,4 @@
-var tagIDs = new Array();//used for determening id of a new entry
+var maxTagID = 0;//used for determening id of a new entry
 var tagTypes = ['Person','City','Car','Football Club','Object'];//all available tags
 var rowData =   {'tagID':'','tagName':'','tagType':'','myFeed':'','hiddenFeed':'','myFavourites':'','hiddenFav':'','actions':'<i class="fas fa-pen" data-toggle="modal" data-target="#inputModal"></i> <i class="fas fa-times"></i>'};//template for a new row
 
@@ -27,7 +27,10 @@ $(function(){
                   'hiddenFav':json[i].myFavourites,
                   'actions' : '<i class="fas fa-pen" data-toggle="modal" data-target="#inputModal"></i> <i class="fas fa-times"></i>'
                 })
-                tagIDs.push(return_data[i].tagID);//loads initial tagID values fron the json file
+                //loads the greatest initial tagID value fron the json file
+                if(return_data[i].tagID > maxTagID){
+                    maxTagID = return_data[i].tagID
+                }
               }
               return return_data;
             }
@@ -145,8 +148,4 @@ $(function(){
             table.row(this).data(data).draw();//appends the new row 
         }, this ))
     } );
-    
-    
 })
-
-

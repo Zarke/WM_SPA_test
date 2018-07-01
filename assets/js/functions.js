@@ -10,18 +10,17 @@ function setIcons(table,colIndx){
   }).draw();
 }
 
-//displays the uploaded image after short progress bar load
+//displays the uploaded image after short progress bar 'load'
 function getImage(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $('.progress').removeClass('d-none');
-            $('#upload i, #upload span').addClass('d-none');
+            $('#upload i,#upload span').addClass('d-none');
             $('.progress-bar').animate({width:'100%'},700,function(){
                 $('.progress').addClass('d-none');
                 $('.progress-bar').css('width', '0%').attr('aria-valuenow', 0); 
-                $('#upload').css('background-image','url(' + e.target.result + ')');
-                $('#upload img').css('width','100%');  
+                $('#upload').css('background','url(' + e.target.result + ') no-repeat').addClass('img-cover');
             })
         };  
         reader.readAsDataURL(input.files[0]);
@@ -55,7 +54,7 @@ function getRowData(data){
         }
     }
     //keeps tagIDs variable up to date on changes
-    for(var i=0;i< tagIDs.length; i++){
+    for(var i=0;i< maxTagID.length; i++){
         if(data.tagID == tagIDs[i]){
             tagIDs[i] = data.tagID;
         }
@@ -66,20 +65,13 @@ function getRowData(data){
 //resets image upload
 function removeImg(){
     $('#upload').css('background-image', 'url()');
-    $('#upload i').removeClass('d-none');
+    $('#upload i, #upload span').removeClass('d-none');
 }
 
 //ensures that the generated tagID is unique by giving it value that is bigger than any that already exists
 function getMaxTagId(tagIDs){
-    maxTagId = tagIDs[0];
-    for (i = 1; i < tagIDs.length; i++) {
-        if(maxTagId < tagIDs[i]){
-            maxTagId = tagIDs[i];
-        }
-        
-    };
-    maxTagId = maxTagId + 1;
-    return maxTagId;
+    maxTagID = maxTagID + 1;
+    return maxTagID;
 }
 
 //adds the now filled rowata template to the table and updates it
@@ -87,9 +79,9 @@ function addEntry(table){
     $('#inputModal').modal('show');
     $('#save').one('click',function(){
         rowData = getRowData(rowData);
-        rowData.tagID = getMaxTagId(tagIDs);
-        tagIDs.push(rowData.tagID);
+        rowData.tagID = getMaxTagId(maxTagID);
         table.row.add(rowData).draw();
+        table.page( 'last' ).draw( 'page' );
     })
     
 }

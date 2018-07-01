@@ -71,7 +71,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="inputModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header justify-content-center" >
@@ -101,14 +101,15 @@
                 
                 <span>Photo</span>
                 <div class="image-upload">
-                    <label id="upload" for="file-input" class=" d-flex justify-content-center" >
-                        <div class="d-flex flex-column justify-content-center">
+                    <label id="upload" for="file-input" class=" d-flex justify-content-center align-items-center" >
+                        <div id="add_photo" class="d-flex flex-column justify-content-center">
                             <i class="fas fa-plus align-self-center upload__Icon"></i>
                             <span>Add photo</span>
                         </div>
                         
-                        <div class="progress d-none" style="width:0">
-                            <div class="progress-bar"></div>
+                        <div class="progress d-none" >
+                            <span>Uploading...</span>
+                            <div class="progress-bar" style="width:0%%"></div>
                         </div>
                     </label>
                     <input id="file-input" class="d-none" type="file" accept="image/gif, image/jpeg, image/png" onchange="getImage(this);"/>
