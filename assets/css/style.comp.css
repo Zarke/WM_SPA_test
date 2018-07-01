@@ -5694,7 +5694,8 @@ a.text-dark:hover, a.text-dark:focus {
       border: 0;
       border-radius: 0;
       background: none;
-      width: 100%; }
+      width: 100%;
+      text-align-last: center; }
 
 .dataTables_filter {
   float: left !important; }
@@ -5737,7 +5738,16 @@ select {
   height: 12rem;
   background-color: #fff;
   border: 0.1rem dashed #ced4da;
-  background-size: cover; }
+  background-size: 100% 100% !important; }
+
+div.progress {
+  border-radius: 0;
+  height: .4rem;
+  vertical-align: middle;
+  width: 90%; }
+  div.progress-bar {
+    background-color: #20c997;
+    transition: none; }
 
 .upload__Icon {
   color: #adb5bd;
@@ -5758,3 +5768,6 @@ select {
   background-color: #20c997;
   padding: .35rem 1.3rem .35rem 1.3rem;
   box-shadow: 0 0.1rem #6c757d; }
+
+.hide_placeholder::-webkit-input-placeholder {
+  opacity: 0; }

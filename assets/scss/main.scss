@@ -61,7 +61,6 @@
                 &::-webkit-input-placeholder {
                     color: #808080;
                     text-align: right;
-                 
                 } 
             } 
             & select{
@@ -69,6 +68,7 @@
                 border-radius: 0;
                 background: none;
                 width: 100%;
+                text-align-last: center;
             }  
             
         }
