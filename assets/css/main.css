@@ -5733,12 +5733,13 @@ select {
 .modal-header {
   border-bottom: 0.1rem #343a40; }
 
-#upload {
+.upload {
   width: 100%;
   height: 12rem;
   background-color: #fff;
-  border: 0.1rem dashed #ced4da;
   background-size: 100% 100% !important; }
+  .upload_border {
+    border: 0.1rem dashed #ced4da; }
 
 div.progress {
   border-radius: 0;

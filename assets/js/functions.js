@@ -21,6 +21,7 @@ function getImage(input) {
                 $('.progress').addClass('d-none');
                 $('.progress-bar').css('width', '0%').attr('aria-valuenow', 0); 
                 $('#upload').css('background','url(' + e.target.result + ') no-repeat').addClass('img-cover');
+                $('#upload').removeClass('upload_border');
             })
         };  
         reader.readAsDataURL(input.files[0]);
@@ -66,6 +67,7 @@ function getRowData(data){
 function removeImg(){
     $('#upload').css('background-image', 'url()');
     $('#upload i, #upload span').removeClass('d-none');
+    $('#upload').addClass('upload_border');
 }
 
 //ensures that the generated tagID is unique by giving it value that is bigger than any that already exists
