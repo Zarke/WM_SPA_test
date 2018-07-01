@@ -51,19 +51,15 @@ $(function(){
                 "targets":[0]
             },
             {
-              "width": "12%",
-              "targets":[3]
-            },
-            {
-              "targets":[4],
-              "visible":false
+             "className": "dt-left",
+              "targets": [1,2]
             },
             {
               "width": "12%",
-              "targets":[5]
+              "targets":[3,5]
             },
             {
-              "targets":[6],
+              "targets":[4,6],
               "visible":false
             }
           ],
@@ -108,13 +104,28 @@ $(function(){
     //search options for the first three columns
     $('#searchTagID').on('keyup', function(){
         table.column(0).search(this.value).draw();
+    }).on('focus', function(){
+        $(this).addClass('hide_placeholder');
+    }).blur(function(){
+        $(this).removeClass('hide_placeholder');
     });
+
     $('#searchTagName').on('keyup', function(){
         table.column(1).search(this.value).draw();
+    }).on('focus', function(){
+        $(this).addClass('hide_placeholder');
+    }).blur(function(){
+        $(this).removeClass('hide_placeholder');
     });
+
     $('#searchTagType').on('keyup', function(){
         table.column(2).search(this.value).draw();
+    }).on('focus', function(){
+        $(this).addClass('hide_placeholder');
+    }).blur(function(){
+        $(this).removeClass('hide_placeholder');
     });
+    
     //filter trigers for My Feed and My Favourites 
     $('#filterFeed').change(function(){
         table.draw();

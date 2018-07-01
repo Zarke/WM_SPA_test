@@ -161,3 +161,8 @@ div.progress{
         box-shadow: 0 .1rem $gray-600;
     }
 }
+.hide_placeholder{
+    &::-webkit-input-placeholder {
+        opacity: 0;
+    }
+}

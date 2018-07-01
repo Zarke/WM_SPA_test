@@ -5767,3 +5767,6 @@ div.progress {
   background-color: #20c997;
   padding: .35rem 1.3rem .35rem 1.3rem;
   box-shadow: 0 0.1rem #6c757d; }
+
+.hide_placeholder::-webkit-input-placeholder {
+  opacity: 0; }
